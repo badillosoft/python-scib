@@ -1,3 +1,5 @@
+# _*_ coding: utf8 _*_
+
 import random
 
 # Creamos una funcion llamada contenido(nombre)
@@ -40,3 +42,5 @@ def contenido_falso(nombre, n):
         f.write("%d\n" % x)
     # Cerrar el archivo
     f.close()
+
+# github.com/badillosoft/python-scib
