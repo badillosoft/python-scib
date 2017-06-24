@@ -56,8 +56,38 @@ Y = [
 
 print len(X), len(Y)
 
+# Crea un clasificador de tipo MLP
 clf = MLPClassifier()
 
+# Ajusta los datos de entramiento para aprender
 clf.fit(X, Y)
 
+# En base a su aprendizaje predecimos
+# que pasa con el X = [1, 0, 1, 1]
+# (La respuesta fue [2] - Godinez)
 print clf.predict([1, 0, 1, 1])
+
+T = [
+    ([1, 0, 0, 0], 3),
+    ([1, 0, 1, 0], 2),
+    ([1, 1, 0, 0], 1),
+    ([1, 1, 0, 0], 1),
+    ([1, 0, 1, 0], 3),
+    ([1, 0, 1, 1], 3),
+    ([1, 1, 1, 1], 2),
+    ([1, 0, 0, 1], 3),
+    ([1, 0, 0, 0], 1),
+    ([1, 1, 0, 0], 2),
+    ([1, 0, 0, 0], 3),
+    ([1, 1, 1, 1], 2),
+    ([1, 0, 0, 0], 3),
+    ([1, 1, 1, 1], 2),
+    ([1, 0, 1, 1], 2),
+    ([1, 0, 1, 1], 2),
+    ([1, 1, 1, 1], 2),
+    ([1, 1, 1, 1], 1),
+    ([1, 0, 1, 1], 2),
+    ([1, 0, 0, 0], 3),
+    ([1, 0, 0, 0], 1),
+]
+
