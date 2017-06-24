@@ -91,3 +91,13 @@ T = [
     ([1, 0, 0, 0], 1),
 ]
 
+def rol(i):
+    if i == 1:
+        return "Otaku"
+    elif i == 2:
+        return "Godinez"
+    else:
+        return "Dark"
+
+for (x, y) in T:
+    
