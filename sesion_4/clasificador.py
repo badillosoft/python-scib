@@ -65,7 +65,7 @@ clf.fit(X, Y)
 # En base a su aprendizaje predecimos
 # que pasa con el X = [1, 0, 1, 1]
 # (La respuesta fue [2] - Godinez)
-print clf.predict([1, 0, 1, 1])
+print clf.predict([[1, 0, 1, 1]])
 
 T = [
     ([1, 0, 0, 0], 3),
@@ -99,5 +99,35 @@ def rol(i):
     else:
         return "Dark"
 
+oc = 0
+oic = 0
+gc = 0
+gic = 0
+dc = 0
+dic = 0
+
 for (x, y) in T:
-    
+    yp = clf.predict([x])[0]
+    if y == 1:
+        if y == yp:
+            oc += 1
+        else:
+            oic += 1
+    elif y == 2:
+        if y == yp:
+            gc += 1
+        else:
+            gic += 1
+    else:
+        if y == yp:
+            dc += 1
+        else:
+            dic += 1
+
+def porcentaje(c, ic):
+    return 100 * float(c) / (c + ic)
+
+print "Otakus %d | %d (%.2f%%)" % (oc, oic, porcentaje(oc, oic))
+print "Godinez %d | %d (%.2f%%)" % (gc, gic, porcentaje(gc, gic))
+print "Darks %d | %d (%.2f%%)" % (dc, dic, porcentaje(dc, dic))
+print "Total: %d | %d (%.2f%%)" % ((oc + gc + dc), (oic + gic + dic), porcentaje(oc + gc + dc, oic + gic + dic))
