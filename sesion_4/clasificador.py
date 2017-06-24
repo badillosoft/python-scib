@@ -55,3 +55,9 @@ Y = [
 ]
 
 print len(X), len(Y)
+
+clf = MLPClassifier()
+
+clf.fit(X, Y)
+
+print clf.predict([1, 0, 1, 1])
