@@ -8,7 +8,7 @@
     {% endfor %}
 </div>
 
-<form>
-    <input type="text" placeholder="Escribe un mensaje">
+<form action="/nuevo-mensaje" method="POST">
+    <input name="mensaje" type="text" placeholder="Escribe un mensaje">
     <input type="submit" value="Enviar">
 </form>

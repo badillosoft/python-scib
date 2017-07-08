@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
 from pymongo import MongoClient
-from datetime import datetime
 
 client = MongoClient()
 db = client.cic
@@ -11,24 +10,9 @@ app.secret_key = 'MI_CLAVE_SECRETA_123'
 @app.route("/")
 def home():
 	if "usuario" in session:
-		messages = db.mensajes.find({})
-		return render_template("chat.html", messages=messages)
+		return "Bienvenido %s" % session["usuario"]
 
 	return redirect("/login")
-
-@app.route("/nuevo-mensaje", methods=["POST"])
-def nuevo_mensaje():
-	user = session["usuario"]
-	date = datetime.now().isoformat()
-	content = request.form["mensaje"]
-	
-	db.mensajes.insert_one({
-		"user": user,
-		"date": date,
-		"content": content
-	})
-
-	return redirect("/")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
