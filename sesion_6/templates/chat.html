@@ -9,6 +9,14 @@
 </div>
 
 <form action="/nuevo-mensaje" method="POST">
-    <input name="mensaje" type="text" placeholder="Escribe un mensaje">
+    <input autofocus name="mensaje" type="text" placeholder="Escribe un mensaje">
     <input type="submit" value="Enviar">
 </form>
+
+<script>
+    window.onload = function() {
+        setTimeout(function() {
+            window.location.reload();
+        }, 5000);
+    }
+</script>
