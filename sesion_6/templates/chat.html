@@ -1,0 +1,14 @@
+<!-- JINJA 2-->
+<div>
+    {% for message in messages %}
+    <div>
+        <span>{{message.user}} [{{message.date}}]:</span>
+        <span>{{message.content}}</span>
+    </div>
+    {% endfor %}
+</div>
+
+<form>
+    <input type="text" placeholder="Escribe un mensaje">
+    <input type="submit" value="Enviar">
+</form>
