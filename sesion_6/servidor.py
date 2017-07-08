@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from pymongo import MongoClient
 from datetime import datetime
+import re
 
 client = MongoClient()
 db = client.cic
@@ -27,6 +28,17 @@ def nuevo_mensaje():
 		"date": date,
 		"content": content
 	})
+
+	# BOT
+	pattern = "[\w\.\-\_]+@\w+\.\w+"
+	#match = re.search(pattern, content)
+	for match in re.finditer(pattern, content):
+		email = match.group(0)
+		db.mensajes.insert_one({
+			"user": "BOT",
+			"date": "???",
+			"content": "Hola me encontre este correo %s >:)" % email
+		})
 
 	return redirect("/")
 
