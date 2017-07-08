@@ -1,8 +1,4 @@
 from flask import Flask, render_template, request, redirect
-from pymongo import MongoClient
-
-client = MongoClient()
-db = client.cic
 
 app = Flask(__name__)
 
@@ -13,17 +9,11 @@ def login():
 		
 	usuario = request.form["usuario"]
 	clave = request.form["clave"]
+	# TODO: Validar usuario y clave
+	if usuario == "pepe" and clave == "123":
+		print "Ingresando con %s (%s)" % (usuario, clave)
+		return redirect("/")
 	
-	usuario = db.usuarios.find_one({ 
-		"usuario": usuario,
-		"clave": clave
-	})
-
-	if not usuario:
-		return render_template("login.html", error=True)
-
-	# Activar la sesion
-
-	return redirect("/")
+	return render_template("login.html", error=True)
 
 app.run()
